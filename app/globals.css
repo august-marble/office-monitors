@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-surface text-text-primary antialiased;
+  }
+}
+
+/* Tabular numbers for consistent metric display */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth transitions for data updates */
+.metric-value {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Subtle background gradient like Marble */
+.marble-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(20, 76, 130, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(132, 114, 105, 0.06), transparent),
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFB 100%);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+  box-shadow: 0 2px 8px rgba(20, 30, 36, 0.06), 0 8px 24px rgba(20, 30, 36, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #F0F4F7 25%,
+    #E5EAEE 50%,
+    #F0F4F7 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
