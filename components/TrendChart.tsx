@@ -27,21 +27,21 @@ export function TrendChart({ title, subtitle, data, color = '#144C82', compact =
 
   return (
     <div>
-      <div className={`flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 ${compact ? 'mb-3' : 'mb-6'}`}>
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-vw mb-vw">
         <div>
-          <h3 className={`text-text-primary font-semibold ${compact ? 'text-base' : 'text-lg'}`}>{title}</h3>
+          <h3 className="text-text-primary font-semibold text-vw-body">{title}</h3>
           {subtitle && (
-            <p className={`text-text-muted ${compact ? 'text-xs' : 'text-sm'}`}>{subtitle}</p>
+            <p className="text-text-muted text-vw-small">{subtitle}</p>
           )}
         </div>
-        <div className={`flex items-center gap-4 text-text-muted ${compact ? 'text-[10px]' : 'text-xs'}`}>
+        <div className="flex items-center gap-vw text-text-muted text-vw-small">
           <span className="flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded" style={{ backgroundColor: color }}></span>
+            <span className="w-[clamp(0.75rem,1vw,1.5rem)] h-0.5 rounded" style={{ backgroundColor: color }}></span>
             Complete
           </span>
           <span className="flex items-center gap-2">
             <span
-              className="w-4 h-0.5 rounded"
+              className="w-[clamp(0.75rem,1vw,1.5rem)] h-0.5 rounded"
               style={{
                 backgroundImage: `repeating-linear-gradient(90deg, ${color} 0, ${color} 3px, transparent 3px, transparent 6px)`
               }}
@@ -50,7 +50,7 @@ export function TrendChart({ title, subtitle, data, color = '#144C82', compact =
           </span>
         </div>
       </div>
-      <div className={compact ? 'h-32' : 'h-56 sm:h-64 md:h-72'}>
+      <div className="h-vw-chart">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>

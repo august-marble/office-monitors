@@ -33,14 +33,14 @@ export function Dashboard({ initialData, refreshInterval }: DashboardProps) {
   return (
     <div className="h-screen w-screen overflow-hidden marble-bg flex flex-col">
       {/* Header - compact for TV */}
-      <header className="border-b border-border px-8 py-3 bg-white/80 backdrop-blur-sm shrink-0">
+      <header className="border-b border-border px-vw py-vw bg-white/80 backdrop-blur-sm shrink-0">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-vw">
             {/* Marble logo */}
-            <svg width="36" height="36" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-[clamp(2rem,3vw,4rem)] h-[clamp(2rem,3vw,4rem)]" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="16" cy="16" r="15" stroke="#141E24" strokeWidth="2" fill="none"/>
             </svg>
-            <span className="text-2xl font-semibold text-text-primary">marble</span>
+            <span className="text-vw-title font-semibold text-text-primary">marble</span>
           </div>
           <RefreshIndicator
             lastUpdated={lastUpdated}
@@ -52,37 +52,37 @@ export function Dashboard({ initialData, refreshInterval }: DashboardProps) {
       </header>
 
       {/* Main content - fills remaining space */}
-      <main className="flex-1 flex flex-col px-8 py-4 min-h-0 overflow-hidden">
-        {/* Hero metric section - takes up available space */}
-        <div className="flex-1 flex flex-col items-center justify-center min-h-0">
+      <main className="flex-1 flex flex-col px-vw py-vw min-h-0 overflow-hidden">
+        {/* Hero metric section - takes up available space, never overlaps chart */}
+        <div className="flex-1 flex flex-col items-center justify-center min-h-0 overflow-hidden">
           {showSkeleton ? (
             <MetricSkeleton />
           ) : (
-            <div className="text-center">
-              <p className="text-text-secondary font-serif text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-4">
+            <div className="text-center max-h-full overflow-hidden">
+              <p className="text-text-secondary font-serif text-vw-title mb-vw">
                 Weekly Active Users
               </p>
-              <h1 className="text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[18rem] font-semibold text-text-primary tabular-nums leading-none metric-value">
+              <h1 className="text-vw-hero font-semibold text-text-primary tabular-nums leading-none metric-value">
                 {data.weeklyActiveUsers.toLocaleString()}
               </h1>
               {data.wauTrend !== 0 && (
-                <div className="mt-4 md:mt-6 inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-surface-secondary">
+                <div className="mt-vw inline-flex items-center gap-vw px-vw py-vw rounded-full bg-surface-secondary">
                   <span
-                    className={`text-xl md:text-2xl lg:text-3xl font-medium ${
+                    className={`text-vw-subtitle font-medium ${
                       data.wauTrend >= 0 ? 'text-emerald-600' : 'text-rose-600'
                     }`}
                   >
                     {data.wauTrend >= 0 ? '↑' : '↓'} {Math.abs(data.wauTrend).toFixed(1)}%
                   </span>
-                  <span className="text-text-muted text-base md:text-lg lg:text-xl">vs last week</span>
+                  <span className="text-text-muted text-vw-body">vs last week</span>
                 </div>
               )}
             </div>
           )}
         </div>
 
-        {/* Chart section - fixed height at bottom */}
-        <div className="shrink-0 bg-white rounded-xl shadow-card border border-border p-4 max-w-3xl mx-auto w-full">
+        {/* Chart section - constrained height at bottom */}
+        <div className="shrink-0 chart-card overflow-hidden bg-white rounded-vw shadow-card border border-border p-vw max-w-vw-chart mx-auto w-full">
           {showSkeleton ? (
             <ChartSkeleton />
           ) : (

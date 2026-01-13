@@ -9,6 +9,74 @@
   }
 }
 
+/* Viewport-relative sizing for TV displays */
+/* These scale proportionally to screen size, not resolution */
+/* Hero uses min(vw, vh) to prevent overflow on wide/short screens */
+/* vh values are conservative to handle extreme aspect ratios */
+.text-vw-hero {
+  font-size: clamp(3rem, min(15vw, 22vh), 20rem);
+}
+
+.text-vw-title {
+  font-size: clamp(1rem, min(2.5vw, 3.5vh), 4rem);
+}
+
+.text-vw-subtitle {
+  font-size: clamp(0.75rem, min(1.5vw, 2vh), 2.5rem);
+}
+
+.text-vw-body {
+  font-size: clamp(0.625rem, min(1.2vw, 1.75vh), 2rem);
+}
+
+.text-vw-small {
+  font-size: clamp(0.5rem, min(1vw, 1.25vh), 1.5rem);
+}
+
+.gap-vw {
+  gap: clamp(0.5rem, 1vw, 2rem);
+}
+
+.p-vw {
+  padding: clamp(1rem, 2vw, 3rem);
+}
+
+.py-vw {
+  padding-top: clamp(0.5rem, 1vw, 1.5rem);
+  padding-bottom: clamp(0.5rem, 1vw, 1.5rem);
+}
+
+.px-vw {
+  padding-left: clamp(1rem, 2vw, 3rem);
+  padding-right: clamp(1rem, 2vw, 3rem);
+}
+
+.mb-vw {
+  margin-bottom: clamp(0.5rem, 1vw, 2rem);
+}
+
+.mt-vw {
+  margin-top: clamp(0.5rem, 1vw, 2rem);
+}
+
+.rounded-vw {
+  border-radius: clamp(0.5rem, 1vw, 1.5rem);
+}
+
+/* Chart area height (inside the card) */
+.h-vw-chart {
+  height: clamp(4rem, 12vh, 12vh);
+}
+
+/* Chart card container - constrain total height including padding */
+.chart-card {
+  max-height: clamp(8rem, 28vh, 28vh);
+}
+
+.max-w-vw-chart {
+  max-width: clamp(40rem, 50vw, 70rem);
+}
+
 /* Tabular numbers for consistent metric display */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
