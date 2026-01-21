@@ -1,4 +1,4 @@
-import { WAU_QUERY } from './queries'
+import { getWAUQuery } from './queries'
 
 interface TrendsQueryResult {
   results: Array<{
@@ -41,7 +41,8 @@ export interface DashboardData {
 }
 
 export async function fetchDashboardData(): Promise<DashboardData> {
-  const result = await executeQuery(WAU_QUERY)
+  // Generate fresh query with current SF date on each request
+  const result = await executeQuery(getWAUQuery())
 
   const data = result.results[0]?.data ?? []
   const labels = result.results[0]?.labels ?? []
